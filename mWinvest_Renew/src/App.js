@@ -4,31 +4,31 @@ import { View } from 'react-native';
 import Login from './components/Login';
 import Main from './components/Main';
 import styles from './styles/styles';
-import store from './configStore';
-import { Provider,connect } from 'react-redux';
 
-const mainView = connect((state) =>({
-      authorized:state.userReducer.authorized
-    })
-)(({authorized,dispatch})=>{
-  if (authorized){
-    return (<Main/>);
-  }else{
-    //dispatch(checkUserExists());
-    return (<Login/>);
-  }
-});
+import { Router, Scene } from 'react-native-router-flux';
+import { Provider,connect } from 'react-redux';
 
 class App extends Component{
   render() {
-    return (
-      <Provider store ={store}>
+    if (this.props.authorized){
+      return (
+        <View style = {styles.container}>
+          <Main/>
+        </View>
+      );
+    }else{
+      return (
         <View style = {styles.container}>
           <Login/>
         </View>
-      </Provider>
-    );
+      );
+    }
   }
 }
+const mapStateToProps = (state,ownProps)=>{
+  return {
+    authorized:state.userReducer.authorized
+  };
+}
 
-export default App;
+export default connect(mapStateToProps)(App);
