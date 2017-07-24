@@ -2,10 +2,10 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import Login from './components/Login';
-import Main from './components/Main';
+import StockList from './components/StockList';
 import styles from './styles/styles';
 
-import { Router, Scene } from 'react-native-router-flux';
+import AppRouter from './components/AppRouter';
 import { Provider,connect } from 'react-redux';
 
 class App extends Component{
@@ -13,13 +13,13 @@ class App extends Component{
     if (this.props.authorized){
       return (
         <View style = {styles.container}>
-          <Main/>
+          <AppRouter/>
         </View>
       );
     }else{
       return (
         <View style = {styles.container}>
-          <Login/>
+          <AppRouter/>
         </View>
       );
     }

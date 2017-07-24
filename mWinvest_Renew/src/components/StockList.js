@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {View,Text,StyleSheet,TouchableOpacity } from 'react-native';
-import style from '../styles/styles';
-class Main extends Component{
+import styles from '../styles/styles';
+class StockList extends Component{
     render(){
       // const { navigate } = this.props.navigation;
       return(
-        <View>
+        <View style = {styles.container}>
             <Text>
                   Welcome !!!!
             </Text>
@@ -16,4 +16,4 @@ class Main extends Component{
 
     }
 }
-export default Main;
+export default StockList;
