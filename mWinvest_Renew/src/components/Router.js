@@ -1,37 +1,45 @@
 import React, { Component } from 'react';
-import{StackNavigator,TabNavigator} from 'react-navigation';
-import Main from '../layout/Main';
-import Order from '../layout/Order'
 
-export const MainStack = StackNavigator({
-  Home:{
-        screen: Main ,
-        navigationOptions:{
-          title:'Price'
-        }
-      }
+import {
+  View,
+} from 'react-native';
 
-});
+import {Router, Scene} from 'react-native-router-flux';
 
- export const OrderStack = StackNavigator({
-  Order:{
-    screen: Order,
-    navigationOptions:{
-      title:'Order'
-    }
-  }
-})
+import Main from './components/Main';
+import Order from './components/Order';
 
-export const Tabbar = TabNavigator({
-    Home : {
-      screen : MainStack
+const AppRouter = () => {
+  return(
+    <Router>
+      <Scene key='root'>
 
-    },
-    Order : {
-      screen : OrderStack
-    }
-  },
-  {
-    tabBarPosition:'bottom'
-  }
-)
+          <Scene
+          key='tabbar'
+          tabs
+          tabBarStyle={{backgroundColor:'#FFFFFF'}}
+          >
+            <Scene key='Price' title="PRICE" icon={TabIcon}>
+              <Scene
+                key='Price'
+                component={Main}
+                title='Price'
+                />
+
+            </Scene>
+
+            <Scene key='Order' title="ORDER" icon={TabIcon}>
+              <Scene
+                key='Order'
+                component={Order}
+                title='Order'
+                />
+
+            </Scene>
+
+        </Scene>
+
+    </Router>
+
+  );
+}
