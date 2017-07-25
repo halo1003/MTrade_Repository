@@ -6,23 +6,15 @@ import StockList from './components/StockList';
 import styles from './styles/styles';
 
 import AppRouter from './components/AppRouter';
-import { Provider,connect } from 'react-redux';
+import { connect } from 'react-redux';
 
 class App extends Component{
   render() {
-    if (this.props.authorized){
-      return (
-        <View style = {styles.container}>
-          <AppRouter/>
-        </View>
-      );
-    }else{
-      return (
-        <View style = {styles.container}>
-          <AppRouter/>
-        </View>
-      );
-    }
+    return(
+      <View style = {styles.container}>
+        {this.props.authorized ? <AppRouter/> : <Login/>}
+      </View>
+    );
   }
 }
 const mapStateToProps = (state,ownProps)=>{

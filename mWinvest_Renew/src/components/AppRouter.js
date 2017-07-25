@@ -1,36 +1,82 @@
 import React, { Component } from 'react';
-
-import {
-  View,
-} from 'react-native';
-
-import { Router, Scene } from 'react-native-router-flux';
-import styles from '../styles/styles';
+import { Container, Content,  Header, Left, Body, Right, Footer, FooterTab, Button, Icon, Text, Title  } from 'native-base';
 import StockList from './StockList';
 import Order from './Order';
+import Portfolio from './Portfolio';
+import { connect } from 'react-redux';
+import { onTouchStockList, onTouchOrder, onTouchPortfolio } from '../actions';
 
-const AppRouter = () => {
-  return(
-    <Router style = {styles.container}>
-      <Scene key='root'>
-          <Scene
-          key='tabbar'
-          tabs = {true}
-          tabBarStyle={{backgroundColor:'#000000'}}
-          tabBarPosition = 'bottom'>
+class AppRouter extends Component {
 
-          <Scene key='Price'
-              component={StockList}
-              title='Price'/>
+  constructor(props) {
+    super(props);
+  }
 
-          <Scene key='Order'
-                component={StockList}
-                title='Order'/>
+  _onTouchStockList = () =>{
+    this.props.dispatch(onTouchStockList());
+  }
 
-        </Scene>
-      </Scene>
-    </Router>
-  );
+  _onTouchOrder = () => {
+    this.props.dispatch(onTouchOrder());
+  }
+
+  _onTouchPortfolio = () => {
+    this.props.dispatch(onTouchPortfolio());
+  }
+
+  render() {
+    return (
+      <Container>
+        <Header>
+         <Left>
+           <Button transparent>
+             <Icon name='arrow-back' />
+           </Button>
+         </Left>
+         <Body>
+           <Title>Header</Title>
+         </Body>
+         <Right>
+           <Button transparent>
+             <Icon name='menu' />
+           </Button>
+         </Right>
+       </Header>
+
+      {this.props.Order ? <Order/> : this.props.Portfolio ? <Portfolio/>:<StockList/>}
+
+      <Content/>
+
+        <Footer>
+          <FooterTab>
+            <Button vertical onPress= {this._onTouchStockList}>
+              <Icon name="apps" />
+              <Text>StockList</Text>
+            </Button>
+
+            <Button vertical onPress= {this._onTouchOrder}>
+              <Icon name="camera" />
+              <Text>Order</Text>
+            </Button>
+
+            <Button vertical onPress= {this._onTouchPortfolio}>
+              <Icon active name="navigate" />
+              <Text>Portfolio</Text>
+            </Button>
+
+          </FooterTab>
+        </Footer>
+      </Container>
+    );
+  }
 }
 
-export default AppRouter;
+const mapStateToProps = (state,ownProps) =>{
+  return{
+    StockList: state.navigatorReducer.StockList,
+    Order: state.navigatorReducer.Order,
+    Portfolio: state.navigatorReducer.Portfolio
+  }
+}
+
+export default connect(mapStateToProps)(AppRouter);
