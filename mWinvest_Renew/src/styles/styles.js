@@ -22,12 +22,28 @@ var styles = StyleSheet.create({
     flex:1,
     // backgroundColor: 'yellow',
     // padding:50,
+    marginHorizontal: 5,
 
   },
   box:{
       flex:1,
-      // alignItems:"center",
-      // justifyContent:"center",
+      marginHorizontal: 5,
+      borderWidth:1,
+      padding:30,
+  },
+  buttonSellBuy:{
+      flex:1,
+      marginHorizontal: 5,
+      padding:30,
+      borderWidth:1,
+  },
+  TextSymbol:{
+      flex:1,
+      justifyContent:'center',
+      marginHorizontal: 5,
+      padding:30,
+      borderWidth:1,
+
   },
 
   listview: {
@@ -80,10 +96,15 @@ var styles = StyleSheet.create({
     backgroundColor: constants.actionColor,
     borderColor: 'transparent',
     borderWidth: 1,
-    paddingLeft: 16,
-    paddingTop: 14,
-    paddingBottom: 16,
+    flex:1,
+    width:100
   },
+  orderButton:{
+    flex:1,
+    alignItems: 'center',
+    flexDirection:'row'
+
+  }
 })
 
 module.exports = styles

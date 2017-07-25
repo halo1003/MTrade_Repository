@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-} from 'react-native';
+import {View,Text,StyleSheet,TouchableOpacity } from 'react-native';
 
-export default class Portfolio extends Component {
-  render() {
-    return (
-      <View>
-        <Text>I'm the Portfolio component</Text>
-      </View>
-    );
-  }
+import style from '../styles/styles';
+
+import { Actions } from 'react-native-router-flux';
+
+class Portfolio extends Component{
+    render(){
+      return(
+        <View>
+            <Text>
+                  Welcome Portfolio!!!!
+            </Text>
+
+        </View>
+
+      );
+
+    }
 }
+export default Portfolio;
