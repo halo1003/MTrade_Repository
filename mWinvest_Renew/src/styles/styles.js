@@ -5,6 +5,19 @@ const constants = {
 };
 
 var styles = StyleSheet.create({
+  mainQuote:{
+    flex: 1,
+    flexDirection: 'row'
+  },
+
+  ListQute:{
+    flex: 1
+  },
+
+  grid:{
+    flex: 3
+  },
+
   container:{
     flex:1,
     // backgroundColor: 'yellow',

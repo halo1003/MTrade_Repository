@@ -35,7 +35,7 @@ class AppRouter extends Component {
          </Left>
          <Body>
            <Title>
-             {this.props.Order ? 'Order' : this.props.Portfolio ? 'Portfolio':  'StockList'}
+             {this.props.Order ? 'Orders' : this.props.Portfolio ? 'Portfolios':  'Quotes'}
            </Title>
          </Body>
          <Right>
@@ -53,7 +53,7 @@ class AppRouter extends Component {
           <FooterTab>
             <Button vertical onPress= {this._onTouchStockList}>
               <Icon name="apps" />
-              <Text>StockList</Text>
+              <Text>Quotes</Text>
             </Button>
 
             <Button vertical onPress= {this._onTouchOrder}>
