@@ -34,7 +34,9 @@ class AppRouter extends Component {
            </Button>
          </Left>
          <Body>
-           <Title>Header</Title>
+           <Title>
+             {this.props.Order ? 'Order' : this.props.Portfolio ? 'Portfolio':  'StockList'}
+           </Title>
          </Body>
          <Right>
            <Button transparent>
