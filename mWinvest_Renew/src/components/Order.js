@@ -25,11 +25,10 @@ export default class Order extends Component {
 
       <ScrollView style={styles.container}>
           <View style={styles.TextSymbol}>
-          <TextInput
-          onChangeText={(value) => this.setState({symbol: value})}
-          placeholder="Symbol"
-          />
-          </View >
+            <TextInput
+            onChangeText={(value) => this.setState({symbol: value})}
+            placeholder="Symbol"/>
+          </View>
 
           <View style={styles.container}>
             <ListView
